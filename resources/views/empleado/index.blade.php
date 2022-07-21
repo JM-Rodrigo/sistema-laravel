@@ -1,3 +1,5 @@
+<a href="{{url('empleado/create')}}">Nuevo registro</a>
+
 <table class="table table-light">
     <thead class="thead-light">
         <tr>
@@ -18,7 +20,9 @@
             <td>{{$empleado->ApellidoPaterno}}</td>
             <td>{{$empleado->ApellidoMaterno}}</td>
             <td>{{$empleado->Correo}}</td>
-            <td>{{$empleado->Foto}}</td>
+            <td>
+                <img src="{{asset('storage').'/'.$empleado->Foto}}" alt="Foto" width="100px">
+            </td>
             <td>
                 <a href="{{url('/empleado/'.$empleado->id.'/edit')}}">Editar</a>
                 |
