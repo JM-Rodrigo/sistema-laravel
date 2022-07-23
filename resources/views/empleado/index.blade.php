@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @if (Session::has('mensaje'))
-            {{Session::get('mensaje')}}    
-        @endif
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+    @if (Session::has('mensaje'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{Session::get('mensaje')}}    
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
 
     <a href="{{url('empleado/create')}}" class="btn btn-success">Nuevo registro</a>
     <br>
@@ -41,12 +41,13 @@
                     <form action="{{url('/empleado/'.$empleado->id)}}" method="post" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" onclick="return confirm('¿Desea eliminar?')" value="Eliminar" class="btn btn-danger">
+                        <input type="submit" onclick="return confirm('¿Desea eliminar?')" value="Eliminar" class="btn btn-danger mx-2">
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+    {!! $empleados->links()!!}
 </div>
 @endsection
